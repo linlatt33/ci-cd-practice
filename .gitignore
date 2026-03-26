@@ -1,0 +1,49 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.swp
+*.swo
+
+# Odoo logs
+*.log
+odoo.log
+
+# Odoo config (optional - ignore if contains secrets)
+*.conf
+
+# Virtual environment
+venv/
+.env/
+.envrc/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# PostgreSQL dump
+*.sql
+
+# Odoo filestore (VERY IMPORTANT)
+filestore/
+data_dir/
+.sessions/
+
+# Odoo addons build / temp
+*.egg-info/
+dist/
+build/
+
+# Node (if using web assets)
+node_modules/
+
+# Backup files
+*.bak
+*.old
