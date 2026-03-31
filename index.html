@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tic Tac Toe | CI/CD Playground</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <p class="eyebrow">CI/CD learning playground</p>
+        <h1>Tic Tac Toe</h1>
+        <p class="subtitle">
+          A tiny UI to pair with your CLI tests. Play a round, then run the
+          pipeline in Actions.
+        </p>
+      </header>
+
+      <section class="panel">
+        <div class="status" role="status" aria-live="polite">
+          <span id="status-text">Player X starts</span>
+          <span id="status-badge" class="badge">In progress</span>
+        </div>
+
+        <div class="board" role="grid" aria-label="Tic Tac Toe board">
+          <button class="cell" data-index="0" aria-label="Cell 1"></button>
+          <button class="cell" data-index="1" aria-label="Cell 2"></button>
+          <button class="cell" data-index="2" aria-label="Cell 3"></button>
+          <button class="cell" data-index="3" aria-label="Cell 4"></button>
+          <button class="cell" data-index="4" aria-label="Cell 5"></button>
+          <button class="cell" data-index="5" aria-label="Cell 6"></button>
+          <button class="cell" data-index="6" aria-label="Cell 7"></button>
+          <button class="cell" data-index="7" aria-label="Cell 8"></button>
+          <button class="cell" data-index="8" aria-label="Cell 9"></button>
+        </div>
+
+        <div class="controls">
+          <button id="reset-board" class="btn">New round</button>
+          <button id="reset-score" class="btn ghost">Reset score</button>
+        </div>
+
+        <div class="scoreboard" aria-label="Scoreboard">
+          <div class="score">
+            <span class="label">Player X</span>
+            <span id="score-x" class="value">0</span>
+          </div>
+          <div class="score">
+            <span class="label">Draws</span>
+            <span id="score-draw" class="value">0</span>
+          </div>
+          <div class="score">
+            <span class="label">Player O</span>
+            <span id="score-o" class="value">0</span>
+          </div>
+        </div>
+      </section>
+
+      <footer class="hint">
+        <p>
+          Tip: For CI, run <code>node index.js --test</code> to validate the
+          rules engine.
+        </p>
+      </footer>
+    </main>
+
+    <script src="ui.js"></script>
+  </body>
+</html>

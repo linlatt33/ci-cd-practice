@@ -2,28 +2,35 @@ name: CI
 
 on:
   push:
-    branches: ["main", "DEV"]
+    branches: [main, DEV]
   pull_request:
-    branches: ["main"]
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
+    name: Node ${{ matrix.node }}
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
         node: [18, 20]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Syntax check (CLI + UI)
+      - name: Verify syntax (CLI + UI)
         run: |
           node --check index.js
           node --check ui.js
@@ -35,10 +42,10 @@ jobs:
         run: node index.js --simulate=1,4,2,5,3
 
       - name: Upload UI artifact
-        if: always()
+        if: always() && matrix.node == 20
         uses: actions/upload-artifact@v4
         with:
-          name: tic-tac-toe-ui-node-${{ matrix.node }}
+          name: tic-tac-toe-ui
           path: |
             index.html
             styles.css
